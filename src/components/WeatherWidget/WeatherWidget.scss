@@ -1,0 +1,26 @@
+.weather-widget {
+  max-height: 104px;
+  padding: 16px 12px 16px 20px;
+  border-radius: 18px;
+  background-color: #212121;
+  width: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h3 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #646464;
+  }
+  .weather-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    img {
+      align-self: end;
+    }
+    .info {
+      line-height: 1.4;
+    }
+  }
+}

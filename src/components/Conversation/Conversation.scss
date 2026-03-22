@@ -1,0 +1,109 @@
+.conversation-view {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  width: 714px;
+  .conversation-header {
+    padding: 16px 24px;
+    border-radius: 18px;
+    background-color: #212121;
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    h1 {
+      font-weight: 500;
+      font-size: 20px;
+    }
+    .details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .category-status {
+        display: flex;
+        gap: 12px;
+        p {
+          padding: 6px 16px;
+          border-radius: 12px;
+        }
+        .category {
+          font-size: 14px;
+          color: #181818;
+          background-color: #c3df18;
+        }
+        .status {
+          font-size: 14px;
+          background-color: transparent;
+          border: 1px solid #fff;
+        }
+      }
+      .last-updated {
+        font-size: 14px;
+        color: #646464;
+      }
+    }
+  }
+  .messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    max-height: 590px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #646464;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      transition: 0.2s;
+      background: #4a4c30;
+    }
+  }
+
+  .message {
+    max-width: 60%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .text {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .time {
+      font-size: 12px;
+      opacity: 0.6;
+      align-self: flex-end;
+    }
+
+    &.customer {
+      align-self: flex-end;
+      background-color: #343434;
+      margin-right: 8px;
+    }
+
+    &.assistant {
+      align-self: flex-start;
+      background-color: #4a4c30;
+      color: white;
+    }
+  }
+  .message-skeleton {
+    max-width: 60%;
+    padding: 8px;
+    margin-right: 8px;
+    border-radius: 12px;
+    background: #343434;
+    margin-bottom: 8px;
+    &:nth-child(odd) {
+      align-self: flex-end;
+    }
+  }
+}

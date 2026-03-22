@@ -1,0 +1,118 @@
+.add-note-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+  width: 290px;
+  .notes-container {
+    padding: 16px;
+    border-radius: 18px;
+    background-color: #212121;
+    h3 {
+      font-weight: 400;
+      font-size: 14px;
+      color: #646464;
+      margin-bottom: 16px;
+    }
+    .notes {
+      max-height: 200px;
+      padding: 2px 4px 0 0;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      row-gap: 12px;
+      .note {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2px;
+        margin-right: 4px;
+        .text {
+          font-size: 16px;
+          color: #fff;
+        }
+        .date {
+          font-size: 12px;
+          color: #646464;
+          align-self: end;
+        }
+      }
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #646464;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        transition: 0.2s;
+        background: #c3df18;
+      }
+    }
+    .empty {
+      padding: 4px 0;
+      display: flex;
+      flex-direction: column;
+      row-gap: 6px;
+      p {
+        font-size: 16px;
+        color: #646464;
+        text-align: center;
+      }
+      img {
+        margin: 0 auto;
+      }
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    .add-note {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    button {
+      padding: 10px 14px;
+      display: block;
+      font-weight: 400;
+      font-size: 16px;
+      color: #181818;
+      background-color: #c3df18;
+      border-radius: 18px;
+      border: none;
+      cursor: pointer;
+      &:hover {
+        transition: 0.2s;
+        background-color: #afc90c;
+      }
+    }
+    input {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 18px;
+      background-color: #212121;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      transition: 0.2s ease;
+      &::placeholder {
+        color: #646464;
+      }
+      &:focus:not(.error),
+      &:hover:not(.error) {
+        transition: 0.2s;
+        outline: 1px solid #c3df18;
+      }
+      &.error {
+        font-size: 16px;
+        outline: 1px solid #ff2525;
+      }
+    }
+    .error {
+      color: #ff2525;
+      font-size: 12px;
+    }
+  }
+}

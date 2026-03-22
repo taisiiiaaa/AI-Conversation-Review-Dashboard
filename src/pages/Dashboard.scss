@@ -1,0 +1,41 @@
+.dashboard {
+  display: flex;
+  gap: 24px;
+  .widgets {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+  .not-selected {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    width: 1000px;
+    align-self: center;
+    h2 {
+      font-family: "DM Mono", monospace;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 80px;
+      color: #c3df18;
+    }
+    p {
+      font-weight: 500;
+      font-size: 16px;
+      text-align: center;
+    }
+    .ai {
+      color: #fff;
+    }
+    .review {
+      margin-left: 218px;
+    }
+    .refine {
+      margin-left: 528px;
+      color: #fff;
+    }
+    .conversations {
+      margin: 0 auto;
+    }
+  }
+}

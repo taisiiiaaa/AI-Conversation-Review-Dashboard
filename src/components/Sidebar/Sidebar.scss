@@ -1,0 +1,56 @@
+.sidebar {
+  height: 96vh;
+  width: 348px;
+  background-color: #212121;
+  border-radius: 18px;
+  padding: 24px 6px 24px 6px;
+  .logo {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-left: 12px;
+    p {
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+  }
+  .filters {
+    padding-left: 10px;
+    margin-bottom: 16px;
+    p {
+      font-weight: 400;
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+  }
+  .conversations {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    max-height: 608px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #646464;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      transition: 0.2s;
+      background: #c3df18;
+    }
+  }
+  .conversation-skeleton {
+    padding: 4px 12px;
+    border-radius: 18px;
+    .ant-skeleton-paragraph {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

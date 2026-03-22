@@ -18,6 +18,7 @@ export default function ReviewActions({
         conv.id === selectedConversation.id
           ? {
               ...conv,
+              updatedAt: new Date().toISOString(),
               status: conv.status === newStatus ? "pending" : newStatus,
             }
           : conv,

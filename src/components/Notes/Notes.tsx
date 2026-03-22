@@ -25,6 +25,7 @@ export default function Notes({ notes, selectedId, setConversations }: Props) {
         conv.id === selectedId
           ? {
               ...conv,
+              updatedAt: new Date().toISOString(),
               notes: [
                 ...conv.notes,
                 {

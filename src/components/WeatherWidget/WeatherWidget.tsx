@@ -11,7 +11,11 @@ export default function WeatherWidget({ city }: Props) {
     <aside className="weather-widget">
       {loading ? (
         <div className="weather-skeleton">
-          <Skeleton active style={{ width: 250 }} />
+          <Skeleton
+            active
+            title={{ width: 250 }}
+            paragraph={{ rows: 1, width: "70%" }}
+          />
         </div>
       ) : (
         <>

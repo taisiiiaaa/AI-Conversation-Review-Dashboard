@@ -3,6 +3,7 @@ import ConversationItem from "./ConversationItem"
 import type { Conversation } from "../../types/types"
 import { Skeleton } from "antd"
 import LogoLink from "../LogoLink/LogoLink"
+import { useEffect } from "react"
 
 type Props = {
   isOpen: boolean
@@ -45,6 +46,18 @@ export default function Sidebar({
   isCollapsed,
   onToggleCollapse,
 }: Props) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
+
   return (
     <aside
       className={`sidebar ${isOpen ? "active" : ""} ${isCollapsed ? "collapsed" : ""}`}>

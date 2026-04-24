@@ -72,7 +72,7 @@
       background-color: rgba(195, 223, 24, 0.15);
     }
     .container {
-      padding-bottom: 65px;
+      padding-bottom: 68px;
       padding-top: clamp(16px, 2vw, 24px);
       @include flex(unset, unset, column, 8px);
       width: 100%;

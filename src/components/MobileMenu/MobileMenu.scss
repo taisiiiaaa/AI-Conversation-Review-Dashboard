@@ -7,9 +7,9 @@
   bottom: 16px;
   padding: 12px 20px;
   border: 1px solid var(--border);
-  background: rgba(7, 7, 7, 0.8);
+  background-color: rgba(7, 7, 7, 0.8);
   backdrop-filter: blur(16px);
-  border-radius: 28px;
+  border-radius: 20px;
   box-shadow:
     0 8px 30px rgba(0, 0, 0, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
@@ -18,7 +18,7 @@
   }
   .container {
     ul {
-      @include flex(center, flex-end, row, 48px);
+      @include flex(space-evenly, flex-end, row, 48px);
       li {
         @include flex(unset, center, column, 6px);
         .icon {

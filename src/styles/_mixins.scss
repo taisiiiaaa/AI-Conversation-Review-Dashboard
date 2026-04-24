@@ -1,0 +1,80 @@
+@mixin flex($justify: center, $align: center, $direction: row, $gap: unset) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin typography(
+  $fs: null,
+  $fw: 400,
+  $color: #fff,
+  $ls: normal,
+  $lh: normal,
+  $tt: none
+) {
+  @if $fs != null {
+    font-size: $fs;
+  }
+
+  font-weight: $fw;
+  color: $color;
+  letter-spacing: $ls;
+  line-height: $lh;
+  text-transform: $tt;
+}
+
+@mixin heading-third() {
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555355;
+}
+
+@mixin category() {
+  @include typography(12px, 500, var(--accent), 0.03em, 1.33);
+  background-color: rgba(195, 223, 24, 0.1);
+  border-radius: 12px;
+  padding: 4px 8px;
+}
+
+@mixin status() {
+  flex-shrink: 0;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: -0.05em;
+  border-radius: 9px;
+  padding: 4px 8px 4px 20px;
+  position: relative;
+  &::before {
+    content: "";
+    width: 6px;
+    position: absolute;
+    height: 6px;
+    border-radius: 100%;
+    margin-right: 6px;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+  }
+  &.approved,
+  &.approved::before {
+    color: #00d492;
+    border: 1px solid rgba(0, 212, 146, 0.5);
+    background-color: rgba(0, 212, 146, 0.2);
+  }
+  &.pending,
+  &.pending::before {
+    color: #ffb900;
+    border: 1px solid rgba(255, 185, 0, 0.5);
+    background-color: rgba(255, 185, 0, 0.2);
+  }
+  &.needs_fix,
+  &.needs_fix::before {
+    color: #ff637e;
+    border: 1px solid rgba(255, 99, 126, 0.5);
+    background-color: rgba(255, 99, 126, 0.2);
+  }
+}

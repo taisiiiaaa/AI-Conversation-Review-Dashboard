@@ -1,7 +1,6 @@
 import "./Notes.scss"
 import formatDate from "../../helpers/FormatDate"
 import type { Conversation, Note } from "../../types/types"
-import emptyIcon from "../../assets/empty.svg"
 import { useState } from "react"
 
 type Props = {
@@ -49,7 +48,6 @@ export default function Notes({ notes, selectedId, setConversations }: Props) {
         <h3>Notes</h3>
         {notes.length === 0 ? (
           <div className="empty">
-            <img src={emptyIcon} alt="Empty icon" width={36} height={36} />
             <p>Nothing here yet</p>
           </div>
         ) : (

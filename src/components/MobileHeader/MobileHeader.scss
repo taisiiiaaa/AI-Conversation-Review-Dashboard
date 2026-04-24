@@ -1,0 +1,53 @@
+@use "../../styles/main.scss" as *;
+
+.mobile-header {
+  padding-block: 14px;
+  background-color: var(--section-bg);
+  border-bottom: 1px solid var(--border);
+  .container {
+    @include flex(space-between);
+    .ham-menu {
+      width: 28px;
+      height: 28px;
+      position: relative;
+      z-index: 1000;
+      cursor: pointer;
+      @include flex(unset, flex-end, column);
+      span {
+        height: 2px;
+        width: 100%;
+        border-radius: 2px;
+        background-color: var(--white);
+        position: absolute;
+        transition:
+          transform 200ms cubic-bezier(0, 0.34, 0.86, 0.61),
+          background-color 300ms ease-in;
+        &:first-child {
+          top: 30%;
+        }
+        &:last-child {
+          width: 70%;
+          bottom: 30%;
+        }
+      }
+      &.active {
+        span {
+          &:first-child {
+            top: 50%;
+            transform: rotate(45deg);
+          }
+
+          &:last-child {
+            width: 100%;
+            top: 50%;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 744px) {
+    display: none;
+  }
+}

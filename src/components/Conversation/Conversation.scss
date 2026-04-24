@@ -1,109 +1,180 @@
+@use "../../styles/main.scss" as *;
+
 .conversation-view {
-  display: flex;
-  flex-direction: column;
-  row-gap: 24px;
-  width: 714px;
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+  @include flex(space-between, unset, column);
+  padding-block: clamp(12px, 3vw, 32px);
   .conversation-header {
-    padding: 16px 24px;
-    border-radius: 18px;
-    background-color: #212121;
-    display: flex;
-    flex-direction: column;
-    row-gap: 4px;
-    h1 {
-      font-weight: 500;
-      font-size: 20px;
-    }
-    .details {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: clamp(12px, 2.5vw, 24px);
+    .container {
+      @include flex(unset, flex-start, column);
       .category-status {
-        display: flex;
-        gap: 12px;
-        p {
-          padding: 6px 16px;
-          border-radius: 12px;
-        }
+        @include flex(unset, center, row, 8px);
+        margin-bottom: clamp(8px, 1.5vw, 12px);
         .category {
-          font-size: 14px;
-          color: #181818;
-          background-color: #c3df18;
+          @include category();
         }
         .status {
-          font-size: 14px;
-          background-color: transparent;
-          border: 1px solid #fff;
+          @include status();
         }
       }
+      h4 {
+        @include typography(20px, 500, var(--white), normal, 1.33);
+        margin-bottom: clamp(4px, 1.5vw, 16px);
+      }
       .last-updated {
-        font-size: 14px;
-        color: #646464;
+        @include typography(12px, 500, #7d7b7d, normal, 1.33);
       }
     }
   }
   .messages {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-    max-height: 590px;
+    width: 100%;
     overflow-y: auto;
-    &::-webkit-scrollbar {
-      width: 4px;
+    overflow-x: hidden;
+    min-height: 0;
+    .empty-state {
+      align-self: center;
+      @include flex(center, center, column);
+      .icon-wrapper {
+        padding: clamp(20px, 3vw, 30px);
+        border-radius: clamp(16px, 2vw, 20px);
+        background-color: #141414;
+        border: 1px solid #212121;
+        margin-bottom: clamp(12px, 1.5vw, 16px);
+        .icon {
+          overflow: visible;
+          width: 16px;
+          height: 16px;
+          stroke: #444545;
+          fill: transparent;
+          display: block;
+        }
+      }
+      .empty-heading {
+        @include typography(16px, 500, #7d7b7d);
+        margin-bottom: clamp(16px, 1vw, 18px);
+      }
+      .empty-body-text {
+        @include typography(14px, 500, #444545);
+      }
     }
-
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
     &::-webkit-scrollbar-thumb {
-      background: #646464;
+      background-color: var(--border);
       border-radius: 10px;
     }
-
     &::-webkit-scrollbar-thumb:hover {
-      transition: 0.2s;
-      background: #4a4c30;
+      background-color: rgba(195, 223, 24, 0.15);
+    }
+    .container {
+      padding-bottom: 65px;
+      padding-top: clamp(16px, 2vw, 24px);
+      @include flex(unset, unset, column, 8px);
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      min-height: 0;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .message {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        max-width: 80%;
+        .icon {
+          width: 20px;
+          height: 20px;
+        }
+        &.customer {
+          align-self: flex-end;
+          .text {
+            padding: 12px 16px;
+            border-radius: 16px 16px 2px 16px;
+            background-color: rgba(195, 223, 24, 0.15);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.29;
+            color: #f6ffc3;
+          }
+          .time {
+            padding-right: 36px;
+            align-self: flex-end;
+          }
+        }
+        &.assistant {
+          align-self: flex-start;
+          .text {
+            padding: 12px 16px;
+            border: 1px solid #212121;
+            border-radius: 16px 16px 16px 2px;
+            background-color: #171717;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.29;
+            color: var(--white);
+          }
+          .time {
+            padding-left: 36px;
+          }
+        }
+        .avatar {
+          display: flex;
+          gap: 8px;
+          align-items: flex-end;
+          .icon {
+            flex-shrink: 0;
+          }
+          &.customer {
+            flex-direction: row-reverse;
+          }
+        }
+        .time {
+          font-weight: 400;
+          font-size: 12px;
+          text-transform: uppercase;
+          color: #555355;
+        }
+      }
     }
   }
-
-  .message {
-    max-width: 60%;
-    padding: 10px 14px;
-    border-radius: 12px;
+}
+.conversation-view.empty {
+  .messages {
+    flex: 1;
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    .text {
-      margin: 0;
-      font-size: 14px;
-    }
-
-    .time {
-      font-size: 12px;
-      opacity: 0.6;
-      align-self: flex-end;
-    }
-
-    &.customer {
-      align-self: flex-end;
-      background-color: #343434;
-      margin-right: 8px;
-    }
-
-    &.assistant {
-      align-self: flex-start;
-      background-color: #4a4c30;
-      color: white;
-    }
+    align-items: center;
   }
-  .message-skeleton {
-    max-width: 60%;
-    padding: 8px;
-    margin-right: 8px;
-    border-radius: 12px;
-    background: #343434;
-    margin-bottom: 8px;
-    &:nth-child(odd) {
-      align-self: flex-end;
+}
+
+@media screen and (min-width: 744px) {
+  .conversation-view {
+    .container {
+      padding-inline: clamp(20px, 4vw, 40px);
+    }
+    .messages {
+      .empty-state {
+        .icon-wrapper {
+          .icon {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+      .container {
+        padding-bottom: 0;
+        .message {
+          .icon {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
     }
   }
 }

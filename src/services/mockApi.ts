@@ -65,32 +65,7 @@ export const mockConversations: Conversation[] = [
     city: "Berlin",
     updatedAt: "2026-03-18T15:30:00Z",
 
-    messages: [
-      {
-        id: "m1",
-        role: "customer",
-        text: "Hi, my order was supposed to arrive yesterday but I still don’t have it.",
-        timestamp: "2026-03-18T15:00:00Z",
-      },
-      {
-        id: "m2",
-        role: "assistant",
-        text: "It may still be in transit.",
-        timestamp: "2026-03-18T15:01:00Z",
-      },
-      {
-        id: "m3",
-        role: "customer",
-        text: "Yeah but can you check where it actually is?",
-        timestamp: "2026-03-18T15:02:00Z",
-      },
-      {
-        id: "m4",
-        role: "assistant",
-        text: "I cannot access tracking details.",
-        timestamp: "2026-03-18T15:03:00Z",
-      },
-    ],
+    messages: [],
 
     notes: [
       {

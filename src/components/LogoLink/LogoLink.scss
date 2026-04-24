@@ -1,0 +1,41 @@
+@use "../../styles/main.scss" as *;
+
+@keyframes glow-move {
+  0% {
+    box-shadow: 0 4px 20px 0 rgba(195, 223, 24, 0.2);
+  }
+  100% {
+    box-shadow: 0 4px 20px 0 rgba(195, 223, 24, 0.6);
+  }
+}
+
+.logo-link {
+  @include flex(unset, center, row, 12px);
+  transition: all 1s ease-in-out;
+  .icon-wrapper {
+    @include flex();
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 3px 16px 0 var(--logo-shadow);
+    background-color: var(--accent);
+    .icon {
+      fill: var(--black);
+    }
+  }
+  .web-name {
+    @include flex(unset, unset, column);
+    p {
+      &:first-child {
+        @include typography(12px, 500, var(--white), 0.16em, 1.33, uppercase);
+      }
+      &:last-child {
+        @include typography(10px, 400, var(--details));
+      }
+    }
+  }
+  &:hover {
+    .icon-wrapper {
+      animation: glow-move 1.5s infinite alternate;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@use "../../styles/main.scss" as *;
+
+.mobile-menu {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  bottom: 16px;
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  background: rgba(7, 7, 7, 0.8);
+  backdrop-filter: blur(16px);
+  border-radius: 28px;
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  @media screen and (min-width: 744px) {
+    display: none;
+  }
+  .container {
+    ul {
+      @include flex(center, flex-end, row, 48px);
+      li {
+        @include flex(unset, center, column, 6px);
+        .icon {
+          stroke: #5e5d5e;
+          fill: transparent;
+        }
+        p {
+          @include typography(12px, 400, #555355, 0.03em);
+        }
+        &:last-child {
+          gap: 4px;
+        }
+      }
+    }
+  }
+}

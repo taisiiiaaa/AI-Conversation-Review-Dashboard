@@ -4,6 +4,7 @@ import formatDate from "../../helpers/FormatDate"
 type Props = {
   title: string
   status: "pending" | "approved" | "needs_fix"
+  category: string
   updatedAt: string
   isSelected: boolean
   onClick: () => void
@@ -12,6 +13,7 @@ type Props = {
 export default function ConversationItem({
   title,
   status,
+  category,
   updatedAt,
   isSelected,
   onClick,
@@ -20,13 +22,16 @@ export default function ConversationItem({
     <li
       className={`conversation-item ${isSelected ? "active" : ""}`}
       onClick={onClick}>
-      <div className="title-status">
-        <h4 className="title">{title}</h4>
-        <p className="status">
+      <div className="item-top">
+        <p className="title">{title}</p>
+        <p className={`status ${status}`}>
           {status === "needs_fix" ? "needs fix" : status}
         </p>
       </div>
-      <time className="updated-at">{formatDate(updatedAt)}</time>
+      <div className="item-bottom">
+        <p className="category">{category}</p>
+        <time className="updated-at">{formatDate(updatedAt)}</time>
+      </div>
     </li>
   )
 }
